@@ -1,2 +1,2 @@
-# silverscript
-Silverscript is a python based shell prompt
+# silver
+Silver is a python based shell prompt
