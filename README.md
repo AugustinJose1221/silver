@@ -1,2 +1,2 @@
 # silver
-Silver is a python based shell prompt
+Silver is a customizable python based shell prompt
