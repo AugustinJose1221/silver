@@ -45,6 +45,52 @@ class silver(Cmd):
         else:
             self.prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green", attrs=['bold'])
     
+    
+    def usernamePrompt(self):
+        if platform.system() == "Windows":
+            self.prompt = colored("Username : ", "green")
+        else:
+            self.prompt = colored("Username :", "green", attrs=['bold'])
+        return self.username()
+            
+    def passwordPrompt(self):
+        if platform.system() == "Windows":
+            self.prompt = colored("Password : ", "green")
+        else:
+            self.prompt = colored("Password :", "green", attrs=['bold'])
+        return self.password()
+    
+    def username(self):
+        """
+
+        Returns
+        -------
+        None.
+
+            
+
+        To be completed
+
+
+        """
+    def password(self):
+        """
+        
+
+        Returns
+        -------
+        None.
+        
+        
+        
+        
+        To be completed
+        
+        
+        
+        
+        """
+            
     def do_exit(self, inp):
         print(colored("\n                                                                \n                   🏇 Hi-Yo, Silver! Away!                      \n                                                                ", "grey", "on_white") + "\n")
         return True
@@ -178,7 +224,17 @@ class silver(Cmd):
                 else:
                     print(colored("Error, kemosabe!\n {}".format(str(ret)),"red"))
                     return self.updatePrompt() 
-                        
+        
+        if args.split(" ")[0]=="push":
+            self.usernamePrompt()
+            """
+            
+            
+            To be completed
+            
+            
+            
+            """
             
             
     
