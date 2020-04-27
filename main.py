@@ -26,29 +26,50 @@ except ImportError:
     colored = None
 
 class silver(Cmd):
+    if platform.system() == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
     f = Figlet(font='slant')
     print(f.renderText('Silver - A Python shell prompt'))
     intro = colored("\n                                                                \n                   🏇 Hi-Yo, Silver! Away!                      \n                                                                ", "grey", "on_white") + "\n"
-    def updatePrompt():
-        if platform.system() == "Windows":
+    if platform.system() == "Windows":
             prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green")
+    else:
+        prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green", attrs=['bold'])
+    
+    
+    def updatePrompt(self):
+        if platform.system() == "Windows":
+            self.prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green")
         else:
-            prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green", attrs=['bold'])
-        
-        
+            self.prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green", attrs=['bold'])
+    
     def do_exit(self, inp):
-        '''exit the application. Shorthand: x q.'''
-        print("Bye")
+        print(colored("\n                                                                \n                   🏇 Hi-Yo, Silver! Away!                      \n                                                                ", "grey", "on_white") + "\n")
         return True
- 
+    
+    def do_cd(self, loc):
+        if loc=="":
+            self.dir = "/"
+        else:
+            self.dir = str(os.getcwd()) + "/" + str(loc) 
+        try:
+            os.chdir(self.dir)
+        except FileNotFoundError:
+            print(colored("No such file or directory, kemosabe!","red"))
+            
+        return self.updatePrompt()
+    
     def default(self, inp):
         if inp == 'x' or inp == 'q':
             return self.do_exit(inp)
  
-        print("Default: {}".format(inp))
- 
+        print(colored("Command {} not found, kemosabe!".format(inp),"red"))
+        return self.updatePrompt()
 
-if __name__ == '__main__':  
+
+if __name__ == '__main__': 
      silver().cmdloop()
 '''
 print(os.name)
