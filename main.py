@@ -58,6 +58,23 @@ class silver(Cmd):
             os.chdir(self.dir)
         except FileNotFoundError:
             print(colored("No such file or directory, kemosabe!","red"))
+   
+        return self.updatePrompt()
+    
+    def do_ls(self, file):
+        
+        if platform.system() == "Windows":
+            print(colored("Command ls not found, kemosabe!","red"))
+            
+        else:
+            self.list = os.listdir()
+            self.contents = ""
+            for i in self.list:
+                if '.' in i:
+                    self.contents = self.contents + "  " + colored(str(i), "green", attrs=['bold'])
+                else:
+                    self.contents = self.contents + "  " + str(i)
+            print(self.contents)
             
         return self.updatePrompt()
     
