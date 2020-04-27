@@ -21,10 +21,10 @@ try:
     from termcolor import colored
     
     
-    
 except ImportError:
     colored = None
 
+from Git import privateClone, Clone, push, add, commit
 class silver(Cmd):
     if platform.system() == "Windows":
         os.system("cls")
@@ -138,6 +138,41 @@ class silver(Cmd):
         return self.updatePrompt()
    
     
+    def do_mkdir(self, file):
+        if file=="":
+            print(colored("Directory name required, kemosabe!","red"))
+        else:
+            try:
+                os.mkdir(str(file))
+            except FileExistsError:
+                print(colored("Directory exists, kemosabe!","red"))
+        return self.updatePrompt()
+    
+    def do_echo(self, stream):
+        print(str(stream))
+        return self.updatePrompt()  
+    
+    def do_git(self, args):
+        if args.split(" ")[0]=="add":
+            if len(args.split(" "))==1:
+                print(colored("Argument missing, kemosabe!","red"))
+                return self.updatePrompt()
+            else:
+                ret = add(args.split(" ")[1])
+                if ret==True:
+                    return self.updatePrompt() 
+                else:
+                    print(colored("Error, kemosabe!\n {}".format(str(ret)),"red"))
+                    return self.updatePrompt() 
+        
+        
+            
+            
+    
+    def emptyline(self):
+        pass
+    
+    
     def default(self, inp):
         if inp == 'x' or inp == 'q':
             return self.do_exit(inp)
@@ -147,5 +182,6 @@ class silver(Cmd):
 
 
 
+#git
 if __name__ == '__main__': 
      silver().cmdloop()
