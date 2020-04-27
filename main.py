@@ -71,7 +71,22 @@ class silver(Cmd):
             self.contents = ""
             for i in self.list:
                 if '.' in i:
-                    self.contents = self.contents + "  " + colored(str(i), "green", attrs=['bold'])
+                    
+                    if i.split(".")[1].lower() in ["png", "jpeg", "jpg", "svg", "tiff", "bmp", "raw"]:
+                        self.contents = self.contents + "  " + colored(str(i), "green", attrs=['bold'])
+                        
+                    elif i.split(".")[1].lower() in ["py", "c", "cpp", "html", "css", "js", "go", "java", "v", "xml"]:
+                        self.contents = self.contents + "  " + colored(str(i), "blue", attrs=['bold'])
+                        
+                    elif i.split(".")[1].lower() in ["pdf", "ppt", "doc", "xlsx", "txt", "md", "epub", "tex"]:
+                        self.contents = self.contents + "  " + colored(str(i), "grey", attrs=['bold'])
+                        
+                    elif i.split(".")[1].lower() in ["zip", "rar", "tar", "gz", "xz"]:
+                        self.contents = self.contents + "  " + colored(str(i), "magenta", attrs=['bold'])
+                        
+                    else:
+                        self.contents = self.contents + "  " + colored(str(i), "yellow", attrs=['bold'])
+                        
                 else:
                     self.contents = self.contents + "  " + str(i)
             print(self.contents)
