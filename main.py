@@ -67,7 +67,14 @@ class silver(Cmd):
             print(colored("Command ls not found, kemosabe!","red"))
             
         else:
-            self.list = os.listdir()
+            if file=="":
+                self.list = os.listdir()
+            else:
+                try:
+                    self.list = os.listdir(str(file))
+                except FileNotFoundError:
+                    print(colored("No such file or directory, kemosabe!","red"))
+                    return self.updatePrompt()
             self.contents = ""
             for i in self.list:
                 if '.' in i:
@@ -93,6 +100,44 @@ class silver(Cmd):
             
         return self.updatePrompt()
     
+    
+    
+    
+    def do_dir(self, file):
+        if file=="":
+                self.list = os.listdir()
+        else:
+            try:
+                self.list = os.listdir(str(file))
+            except FileNotFoundError:
+                print(colored("No such file or directory, kemosabe!","red"))
+                return self.updatePrompt()
+        self.contents = ""
+        for i in self.list:
+            if '.' in i:
+                
+                if i.split(".")[1].lower() in ["png", "jpeg", "jpg", "svg", "tiff", "bmp", "raw"]:
+                    self.contents = self.contents + "  " + colored(str(i), "green", attrs=['bold'])
+                    
+                elif i.split(".")[1].lower() in ["py", "c", "cpp", "html", "css", "js", "go", "java", "v", "xml"]:
+                    self.contents = self.contents + "  " + colored(str(i), "blue", attrs=['bold'])
+                    
+                elif i.split(".")[1].lower() in ["pdf", "ppt", "doc", "xlsx", "txt", "md", "epub", "tex"]:
+                    self.contents = self.contents + "  " + colored(str(i), "grey", attrs=['bold'])
+                    
+                elif i.split(".")[1].lower() in ["zip", "rar", "tar", "gz", "xz"]:
+                    self.contents = self.contents + "  " + colored(str(i), "magenta", attrs=['bold'])
+                    
+                else:
+                    self.contents = self.contents + "  " + colored(str(i), "yellow", attrs=['bold'])
+                    
+            else:
+                self.contents = self.contents + "  " + str(i)
+        print(self.contents)
+        
+        return self.updatePrompt()
+   
+    
     def default(self, inp):
         if inp == 'x' or inp == 'q':
             return self.do_exit(inp)
@@ -101,17 +146,6 @@ class silver(Cmd):
         return self.updatePrompt()
 
 
+
 if __name__ == '__main__': 
      silver().cmdloop()
-'''
-print(os.name)
-print(os.getcwd())
-
-os.chdir("/home/bernd/dropbox/websites/python-course.eu/cities")
-print(os.getcwd())
-
-print(os.listdir()) 
-string = "Test"
-color = "green"
-print(colored(string, color))
-'''
