@@ -152,7 +152,9 @@ class silver(Cmd):
         print(str(stream))
         return self.updatePrompt()  
     
+    
     def do_git(self, args):
+        
         if args.split(" ")[0]=="add":
             if len(args.split(" "))==1:
                 print(colored("Argument missing, kemosabe!","red"))
@@ -165,7 +167,18 @@ class silver(Cmd):
                     print(colored("Error, kemosabe!\n {}".format(str(ret)),"red"))
                     return self.updatePrompt() 
         
-        
+        if args.split(" ")[0]=="commit":
+            if len(args.split(" ")) <= 1:
+                print(colored("Argument missing, kemosabe!","red"))
+                return self.updatePrompt()
+            else:
+                ret = commit(args.split(" ")[2])
+                if ret==True:
+                    return self.updatePrompt()
+                else:
+                    print(colored("Error, kemosabe!\n {}".format(str(ret)),"red"))
+                    return self.updatePrompt() 
+                        
             
             
     
