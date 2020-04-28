@@ -8,15 +8,11 @@ Created on Sun Apr 26 11:04:48 2020
 
 import os
 import platform
-import subprocess
-import sys
 
 from cmd import Cmd
 from pyfiglet import Figlet
 
-if platform.system() == "Windows":
-    import msvcrt
-    
+
 try:
     from termcolor import colored
     
@@ -248,6 +244,8 @@ class silver(Cmd):
                     return self.updatePrompt()    
                    
        
+    #help
+    #documentation
     
     def emptyline(self):
         pass
