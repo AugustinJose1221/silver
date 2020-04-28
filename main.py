@@ -48,49 +48,19 @@ class silver(Cmd):
     
     def usernamePrompt(self):
         if platform.system() == "Windows":
-            self.prompt = colored("Username : ", "green")
+            self.username = input(colored("Username : ", "green"))
         else:
-            self.prompt = colored("Username :", "green", attrs=['bold'])
-        return self.username()
+            self.username = input(colored("Username :", "green", attrs=['bold']))
+        return self.username
             
     def passwordPrompt(self):
         if platform.system() == "Windows":
-            self.prompt = colored("Password : ", "green")
+            self.password = input(colored("Password : ", "green"))
         else:
-            self.prompt = colored("Password :", "green", attrs=['bold'])
-        return self.password()
+            self.password = input(colored("Password :", "green", attrs=['bold']))
+        return self.password
     
-    def username(self):
-        """
-
-        Returns
-        -------
-        None.
-
-            
-
-        To be completed
-
-
-        """
-    def password(self):
-        """
-        
-
-        Returns
-        -------
-        None.
-        
-        
-        
-        
-        To be completed
-        
-        
-        
-        
-        """
-            
+    
     def do_exit(self, inp):
         print(colored("\n                                                                \n                   🏇 Hi-Yo, Silver! Away!                      \n                                                                ", "grey", "on_white") + "\n")
         return True
@@ -226,15 +196,22 @@ class silver(Cmd):
                     return self.updatePrompt() 
         
         if args.split(" ")[0]=="push":
-            self.usernamePrompt()
-            """
+            if len(args.split(" ")) <= 2:    
+                print(colored("Argument missing, kemosabe!","red"))
+                return self.updatePrompt()
+            else:
+                self.username = self.usernamePrompt()
+                self.password = self.passwordPrompt()
+                self.repo = str(os.path.split(str(os.getcwd()))[len(os.path.split(str(os.getcwd())))-1])
+                ret = push(self.username, self.password, self.repo)
+                if ret==True:
+                    return self.updatePrompt()
+                else:
+                    print(colored("Error, kemosabe!\n {}".format(str(ret)),"red"))
+                    return self.updatePrompt() 
+                
             
             
-            To be completed
-            
-            
-            
-            """
             
             
     
