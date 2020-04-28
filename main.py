@@ -24,7 +24,7 @@ try:
 except ImportError:
     colored = None
 
-from Git import privateClone, Clone, push, add, commit
+from Git import privateClone, clone, push, add, commit
 class silver(Cmd):
     if platform.system() == "Windows":
         os.system("cls")
@@ -209,11 +209,39 @@ class silver(Cmd):
                 else:
                     print(colored("Error, kemosabe!\n {}".format(str(ret)),"red"))
                     return self.updatePrompt() 
-                
             
-            
-            
-            
+        if args.split(" ")[0]=="clone":
+            if len(args.split(" ")) <= 1:
+                print(colored("Argument missing, kemosabe!","red"))
+                return self.updatePrompt()
+            else:
+                self.repo = str(args.split(" ")[1]).split("/")[len(str(args.split(" ")[1]).split("/"))-1].split(".")[0]
+                ret = clone(str(args.split(" ")[1]), self.repo)
+                if ret==True:
+                    return self.updatePrompt()
+                elif "code(128)" in str(ret).split():
+                    self.username = self.usernamePrompt()
+                    self.password = self.passwordPrompt()
+                    self.changedPassword = ""
+                    for i in self.password:
+                        if i=='@':
+                            self.changedPassword = self.changedPassword + "%40"
+                        else:
+                            self.changedPassword = self.changedPassword + str(i)
+                    ret = privateClone(str(args.split(" ")[1]), self.repo, self.username, self.changedPassword)
+                    if ret==True:
+                        return self.updatePrompt()
+                    elif "code(128)" in str(ret).split():
+                        print(colored("Invalid username or password, kemosabe!","red"))
+                        return self.updatePrompt()
+                    else:
+                        print(colored("Command failed, kemosabe!","red"))
+                        return self.updatePrompt()
+                else:
+                    print(colored("Command failed, kemosabe!","red"))
+                    return self.updatePrompt()    
+                   
+       
     
     def emptyline(self):
         pass

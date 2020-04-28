@@ -10,7 +10,7 @@ def privateClone(url, dest, username, password):
         return e
     return True
 
-def Clone(url, dest):
+def clone(url, dest):
     try:
         Repo.clone_from(url, dest)
     except GitCommandError as e:
