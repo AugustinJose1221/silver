@@ -202,8 +202,14 @@ class silver(Cmd):
             else:
                 self.username = self.usernamePrompt()
                 self.password = self.passwordPrompt()
+                self.changedPassword = ""
+                for i in self.password:
+                    if i=='@':
+                        self.changedPassword = self.changedPassword + "%40"
+                    else:
+                        self.changedPassword = self.changedPassword + str(i)
                 self.repo = str(os.path.split(str(os.getcwd()))[len(os.path.split(str(os.getcwd())))-1])
-                ret = push(self.username, self.password, self.repo)
+                ret = push(self.username, self.changedPassword, self.repo)
                 if ret==True:
                     return self.updatePrompt()
                 else:
