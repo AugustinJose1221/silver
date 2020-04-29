@@ -5,6 +5,51 @@ Created on Sun Apr 26 11:04:48 2020
 
 @author: augustinjose
 """
+"""
+
+   _____ _ __                            ___ 
+  / ___/(_) /   _____  _____            /   |
+  \__ \/ / / | / / _ \/ ___/  ______   / /| |
+ ___/ / / /| |/ /  __/ /     /_____/  / ___ |
+/____/_/_/ |___/\___/_/              /_/  |_|
+                                             
+    ____        __  __                        __         ____
+   / __ \__  __/ /_/ /_  ____  ____     _____/ /_  ___  / / /
+  / /_/ / / / / __/ __ \/ __ \/ __ \   / ___/ __ \/ _ \/ / / 
+ / ____/ /_/ / /_/ / / / /_/ / / / /  (__  ) / / /  __/ / /  
+/_/    \__, /\__/_/ /_/\____/_/ /_/  /____/_/ /_/\___/_/_/   
+      /____/                                                 
+                                      __ 
+    ____  _________  ____ ___  ____  / /_
+   / __ \/ ___/ __ \/ __ `__ \/ __ \/ __/
+  / /_/ / /  / /_/ / / / / / / /_/ / /_  
+ / .___/_/   \____/_/ /_/ /_/ .___/\__/  
+/_/                        /_/           
+
+
+                                                                
+                   🏇 Hi-Yo, Silver! Away!                      
+                                                                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 
 import os
 import platform
@@ -21,6 +66,10 @@ except ImportError:
     colored = None
 
 from Git import privateClone, clone, push, add, commit
+
+
+
+
 class silver(Cmd):
     if platform.system() == "Windows":
         os.system("cls")
@@ -198,12 +247,14 @@ class silver(Cmd):
             else:
                 self.username = self.usernamePrompt()
                 self.password = self.passwordPrompt()
-                self.changedPassword = ""
+                self.changedPassword = self.changePassword(self.password)
+                '''
                 for i in self.password:
                     if i=='@':
                         self.changedPassword = self.changedPassword + "%40"
                     else:
                         self.changedPassword = self.changedPassword + str(i)
+                '''
                 self.repo = str(os.path.split(str(os.getcwd()))[len(os.path.split(str(os.getcwd())))-1])
                 ret = push(self.username, self.changedPassword, self.repo)
                 if ret==True:
@@ -224,12 +275,14 @@ class silver(Cmd):
                 elif "code(128)" in str(ret).split():
                     self.username = self.usernamePrompt()
                     self.password = self.passwordPrompt()
-                    self.changedPassword = ""
+                    self.changedPassword = self.changePassword(self.password)
+                    '''
                     for i in self.password:
                         if i=='@':
                             self.changedPassword = self.changedPassword + "%40"
                         else:
                             self.changedPassword = self.changedPassword + str(i)
+                    '''
                     ret = privateClone(str(args.split(" ")[1]), self.repo, self.username, self.changedPassword)
                     if ret==True:
                         return self.updatePrompt()
@@ -246,7 +299,51 @@ class silver(Cmd):
        
     #help
     #documentation
-    
+    def changePassword(self, password):
+        self.changedPassword=""
+        for i in self.password:
+            if i=='!':
+                self.changedPassword = self.changedPassword + "%21"
+            if i=='#':
+                self.changedPassword = self.changedPassword + "%23"
+            if i=='$':
+                self.changedPassword = self.changedPassword + "%24"
+            if i=='&':
+                self.changedPassword = self.changedPassword + "%26"
+            if i=='(':
+                self.changedPassword = self.changedPassword + "%28"
+            if i==')':
+                self.changedPassword = self.changedPassword + "%29"
+            if i=='\'':
+                self.changedPassword = self.changedPassword + "%27"
+            if i=='*':
+                self.changedPassword = self.changedPassword + "%2A"
+            if i=='+':
+                self.changedPassword = self.changedPassword + "%2B"
+            if i==',':
+                self.changedPassword = self.changedPassword + "%2C"
+            if i=='/':
+                self.changedPassword = self.changedPassword + "%2F"
+            if i==':':
+                self.changedPassword = self.changedPassword + "%3A"
+            if i==';':
+                self.changedPassword = self.changedPassword + "%3B"
+            if i=='=':
+                self.changedPassword = self.changedPassword + "%3D"
+            if i=='?':
+                self.changedPassword = self.changedPassword + "%3F"
+            if i=='@':
+                self.changedPassword = self.changedPassword + "%40"
+            if i=='[':
+                self.changedPassword = self.changedPassword + "%5B"
+            if i==']':
+                self.changedPassword = self.changedPassword + "%5D"
+            else:
+                self.changedPassword = self.changedPassword + str(i)
+        return self.changedPassword
+                
+                
+                
     def emptyline(self):
         pass
     
