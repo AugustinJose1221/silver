@@ -95,17 +95,17 @@ class silver(Cmd):
         prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green", attrs=['bold'])
     
     
+    
+    
     def updatePrompt(self):
         """
-
+        Updates the prompt with the path of the current directory when called.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
         
         Returns:
-        
-            TODO: To be added
+            None
 
         """
         if platform.system() == "Windows":
@@ -114,18 +114,17 @@ class silver(Cmd):
             self.prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green", attrs=['bold'])
     
     
+    
+    
     def usernamePrompt(self):
         """
-
+        Displays a prompt to input the username and returns the username.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
         
         Returns:
-        
-            TODO: To be added
-
+            username (str): The username entered by the user.
         
         """
         if platform.system() == "Windows":
@@ -134,17 +133,17 @@ class silver(Cmd):
             self.username = input(colored("Username :", "green", attrs=['bold']))
         return self.username
             
+    
+    
+    
     def passwordPrompt(self):
         """
-
+        Displays a prompt to input the password and returns the password.
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
         
         Returns:
-        
-            TODO: To be added
+            password (str): The password entered by the user.
 
         """
         if platform.system() == "Windows":
@@ -154,33 +153,41 @@ class silver(Cmd):
         return self.password
     
     
+    
+    
     def do_exit(self, inp):
         """
-
+        Exits from the shell.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            inp (str): Optional exit prompt.
         
         Returns:
-        
-            TODO: To be added
+            True: if TypeError is False.
+            self.updatePrompt(): if TypeError is True.
 
         """
-        print(colored("\n                                                                \n                   🏇 Hi-Yo, Silver! Away!                      \n                                                                ", "grey", "on_white") + "\n")
-        return True
+        try:
+            print(colored("\n                                                                \n                   🏇 Hi-Yo, Silver! Away!                      \n                                                                ", "grey", "on_white") + "\n")
+            return True
+        except TypeError:
+            print(colored("Command not found, kemosabe!","red"))
+            return self.updatePrompt()
+    
+    
+    
     
     def do_cd(self, loc):
         """
-
+        Changes the working directory of the shell to the user defined directory.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            loc (str): Path of the directory.
         
         Returns:
-        
-            TODO: To be added
+            self.updatePrompt()
 
         """
         if loc=="":
@@ -194,17 +201,21 @@ class silver(Cmd):
    
         return self.updatePrompt()
     
+    
+    
+    
     def do_ls(self, file):
         """
-
+        Lists the contents of the specified directory. If no path is given, the contents of the current working directory is listed. 
+        Command not available for Windows platform. Returns "Command ls not found, kemosabe!" if executed in Windows. Use dir command
+        instead of ls in Windows systems.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            file (path): Path of the directory to be listed.
         
         Returns:
-        
-            TODO: To be added
+            self.updatePrompt()
 
         """
         
@@ -250,15 +261,13 @@ class silver(Cmd):
     
     def do_dir(self, file):
         """
-
+        Displays the contents of the directory specified. If no path is given, the path of the current working directory is used.
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            file (str): The path of the directory.
         
         Returns:
-        
-            TODO: To be added
+            self.updatePrompt()
 
         """
         if file=="":
@@ -295,17 +304,18 @@ class silver(Cmd):
         return self.updatePrompt()
    
     
+   
+    
     def do_mkdir(self, file):
         """
-
+        Creates a directory within the current working directory.
+    
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            file (str): Path of the directory to be created.
         
         Returns:
-        
-            TODO: To be added
+            self.updatePrompt()
 
         """
         if file=="":
@@ -316,35 +326,38 @@ class silver(Cmd):
             except FileExistsError:
                 print(colored("Directory exists, kemosabe!","red"))
         return self.updatePrompt()
-    
+
+
+
+
     def do_echo(self, stream):
         """
-
+        Displays a message in the shell.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            stream (str): The string to be displayed in the shell.
         
         Returns:
-        
-            TODO: To be added
+            self.updatePrompt()
 
         """
         print(str(stream))
         return self.updatePrompt()  
     
     
+    
+    
     def do_git(self, args):
         """
-
+        Executes git commands.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            args (str): The subcommands and attributes of the git command.
         
         Returns:
-        
-            TODO: To be added
+            self.updatePrompt()
 
         """
         
@@ -380,13 +393,6 @@ class silver(Cmd):
                 self.username = self.usernamePrompt()
                 self.password = self.passwordPrompt()
                 self.changedPassword = self.changePassword(self.password)
-                '''
-                for i in self.password:
-                    if i=='@':
-                        self.changedPassword = self.changedPassword + "%40"
-                    else:
-                        self.changedPassword = self.changedPassword + str(i)
-                '''
                 self.repo = str(os.path.split(str(os.getcwd()))[len(os.path.split(str(os.getcwd())))-1])
                 ret = push(self.username, self.changedPassword, self.repo)
                 if ret==True:
@@ -408,13 +414,6 @@ class silver(Cmd):
                     self.username = self.usernamePrompt()
                     self.password = self.passwordPrompt()
                     self.changedPassword = self.changePassword(self.password)
-                    '''
-                    for i in self.password:
-                        if i=='@':
-                            self.changedPassword = self.changedPassword + "%40"
-                        else:
-                            self.changedPassword = self.changedPassword + str(i)
-                    '''
                     ret = privateClone(str(args.split(" ")[1]), self.repo, self.username, self.changedPassword)
                     if ret==True:
                         return self.updatePrompt()
@@ -429,19 +428,20 @@ class silver(Cmd):
                     return self.updatePrompt()    
                    
        
+        
+       
     #help
     #documentation
     def changePassword(self, password):
         """
-
+        Replaces special characters with their URL encodings.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            password (str): The input password to be formatted.
         
         Returns:
-        
-            TODO: To be added
+            self.changePassword :The formatted password with special characters replaced by their URL encodings.
 
         """
         self.changedPassword=""
@@ -488,33 +488,33 @@ class silver(Cmd):
                 
                 
                 
+                
     def emptyline(self):
         """
-
+        Executes when Return key is entered without any commands.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
         
         Returns:
-        
-            TODO: To be added
-
+            None
         """
         pass
     
     
+    
+    
     def default(self, inp):
         """
-
+        Displays error message whenever an unknown command is executed.
+        
         Args:
-        
-            TODO: To be added
-        
+            self (obj): The class object.
+            inp (str): The command executed.        
         
         Returns:
-        
-            TODO: To be added
+            self.do_exit(): When the exit sequence is executed.
+            self.update_Prompt(): When unknown command is executed
 
         """
         if inp == 'x' or inp == 'q':
