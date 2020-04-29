@@ -71,6 +71,17 @@ from Git import privateClone, clone, push, add, commit
 
 
 class silver(Cmd):
+    """
+    
+    TODO: class docstring to be added
+    
+    
+        Methods
+        -------
+    
+        To be added
+    
+    """
     if platform.system() == "Windows":
         os.system("cls")
     else:
@@ -85,6 +96,18 @@ class silver(Cmd):
     
     
     def updatePrompt(self):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         if platform.system() == "Windows":
             self.prompt = colored(str("~") + str(os.getcwd()) + str("> "), "green")
         else:
@@ -92,6 +115,19 @@ class silver(Cmd):
     
     
     def usernamePrompt(self):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        
+        """
         if platform.system() == "Windows":
             self.username = input(colored("Username : ", "green"))
         else:
@@ -99,6 +135,18 @@ class silver(Cmd):
         return self.username
             
     def passwordPrompt(self):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         if platform.system() == "Windows":
             self.password = input(colored("Password : ", "green"))
         else:
@@ -107,10 +155,34 @@ class silver(Cmd):
     
     
     def do_exit(self, inp):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         print(colored("\n                                                                \n                   🏇 Hi-Yo, Silver! Away!                      \n                                                                ", "grey", "on_white") + "\n")
         return True
     
     def do_cd(self, loc):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         if loc=="":
             self.dir = "/"
         else:
@@ -123,6 +195,18 @@ class silver(Cmd):
         return self.updatePrompt()
     
     def do_ls(self, file):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         
         if platform.system() == "Windows":
             print(colored("Command ls not found, kemosabe!","red"))
@@ -165,6 +249,18 @@ class silver(Cmd):
     
     
     def do_dir(self, file):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         if file=="":
                 self.list = os.listdir()
         else:
@@ -200,6 +296,18 @@ class silver(Cmd):
    
     
     def do_mkdir(self, file):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         if file=="":
             print(colored("Directory name required, kemosabe!","red"))
         else:
@@ -210,11 +318,35 @@ class silver(Cmd):
         return self.updatePrompt()
     
     def do_echo(self, stream):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         print(str(stream))
         return self.updatePrompt()  
     
     
     def do_git(self, args):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         
         if args.split(" ")[0]=="add":
             if len(args.split(" "))==1:
@@ -300,6 +432,18 @@ class silver(Cmd):
     #help
     #documentation
     def changePassword(self, password):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         self.changedPassword=""
         for i in self.password:
             if i=='!':
@@ -345,10 +489,34 @@ class silver(Cmd):
                 
                 
     def emptyline(self):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         pass
     
     
     def default(self, inp):
+        """
+
+        Args:
+        
+            TODO: To be added
+        
+        
+        Returns:
+        
+            TODO: To be added
+
+        """
         if inp == 'x' or inp == 'q':
             return self.do_exit(inp)
  
