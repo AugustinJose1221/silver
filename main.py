@@ -71,15 +71,23 @@ from Git import privateClone, clone, push, add, commit
 
 
 class silver(Cmd):
-    """
-    
-    TODO: class docstring to be added
-    
-    
-        Methods
-        -------
-    
-        To be added
+    """ 
+    Executing silver.cmdloop() starts a commandline shell.
+     
+    Methods:
+        updatePrompt(obj, str)
+        usernamePrompt(obj)
+        passwordPrompt(obj)
+        do_exit(obj, str)
+        do_cd(obj, str)
+        do_ls(obj,str)
+        do_dir(obj, str)
+        do_mkdir(obj, str)
+        do_echo(obj, str)
+        do_git(obj, str)
+        changePassword(obj, str)
+        emptyline(obj)
+        default(obj, str)
     
     """
     if platform.system() == "Windows":
@@ -100,7 +108,7 @@ class silver(Cmd):
     def updatePrompt(self):
         """
         Updates the prompt with the path of the current directory when called.
-        
+            
         Args:
             self (obj): The class object.
         
@@ -157,14 +165,20 @@ class silver(Cmd):
     
     def do_exit(self, inp):
         """
-        Exits from the shell.
-        
+Description:
+    Exits from the shell.
+
+Usage:
+    exit [OPTIONAL]<exit message>
+    
+        """
+        """
         Args:
             self (obj): The class object.
             inp (str): Optional exit prompt.
         
         Returns:
-            True: if TypeError is False.
+            True (bool): if TypeError is False.
             self.updatePrompt(): if TypeError is True.
 
         """
@@ -180,8 +194,14 @@ class silver(Cmd):
     
     def do_cd(self, loc):
         """
-        Changes the working directory of the shell to the user defined directory.
-        
+Description:
+    Changes the working directory of the shell to the user defined directory.
+
+Usage:
+    cd [OPTIONAL]<directory><path>
+    
+        """
+        """
         Args:
             self (obj): The class object.
             loc (str): Path of the directory.
@@ -206,10 +226,16 @@ class silver(Cmd):
     
     def do_ls(self, file):
         """
-        Lists the contents of the specified directory. If no path is given, the contents of the current working directory is listed. 
-        Command not available for Windows platform. Returns "Command ls not found, kemosabe!" if executed in Windows. Use dir command
-        instead of ls in Windows systems.
-        
+Description:
+    Lists the contents of the specified directory. If no path is given, the contents of the current working directory is listed. 
+    Command not available for Windows platform. Returns "Command ls not found, kemosabe!" if executed in Windows. Use dir command
+    instead of ls in Windows systems.
+
+Usage:
+    ls [OPTIONAL]<directory><path>
+    
+        """
+        """
         Args:
             self (obj): The class object.
             file (path): Path of the directory to be listed.
@@ -261,7 +287,14 @@ class silver(Cmd):
     
     def do_dir(self, file):
         """
-        Displays the contents of the directory specified. If no path is given, the path of the current working directory is used.
+Description:
+    Displays the contents of the directory specified. If no path is given, the path of the current working directory is used.
+
+Usage:
+    dir [OPTIONAL]<directory><path>
+    
+        """
+        """
         Args:
             self (obj): The class object.
             file (str): The path of the directory.
@@ -308,8 +341,14 @@ class silver(Cmd):
     
     def do_mkdir(self, file):
         """
-        Creates a directory within the current working directory.
+Description:
+    Creates a directory within the current working directory.
+
+Usage:
+    mkdir directory><path>
     
+        """
+        """
         Args:
             self (obj): The class object.
             file (str): Path of the directory to be created.
@@ -332,8 +371,14 @@ class silver(Cmd):
 
     def do_echo(self, stream):
         """
-        Displays a message in the shell.
-        
+Description:
+    Displays a message in the shell.
+
+Usage:
+    echo [OPTIONAL]<message>
+    
+        """
+        """
         Args:
             self (obj): The class object.
             stream (str): The string to be displayed in the shell.
@@ -350,8 +395,18 @@ class silver(Cmd):
     
     def do_git(self, args):
         """
-        Executes git commands.
+Description:
+    Executes git commands.
+
+Usage:
+    git [OPTIONAL][add <directory><path>][commit <message>][push <origin> <branch>][clone <url>]
+        add     Adds file(s) to a local git repository index 
+        commit  Record changes to the repository
+        push    Update remote refs along with associated objects
+        clone   Clone a repository into a new directory
         
+        """
+        """
         Args:
             self (obj): The class object.
             args (str): The subcommands and attributes of the git command.
@@ -425,13 +480,11 @@ class silver(Cmd):
                         return self.updatePrompt()
                 else:
                     print(colored("Command failed, kemosabe!","red"))
-                    return self.updatePrompt()    
-                   
+                    return self.updatePrompt()                   
        
         
        
-    #help
-    #documentation
+    
     def changePassword(self, password):
         """
         Replaces special characters with their URL encodings.
@@ -525,6 +578,5 @@ class silver(Cmd):
 
 
 
-#git
 if __name__ == '__main__': 
      silver().cmdloop()
