@@ -1,23 +1,4 @@
-<p><h5>
-   _____ _ __                            ___ <br>
-  / ___/(_) /   _____  _____            /   |<br>
-  \__ \/ / / | / / _ \/ ___/  ______   / /| |<br>
- ___/ / / /| |/ /  __/ /     /_____/  / ___ |<br>
-/____/_/_/ |___/\___/_/              /_/  |_|<br>
-                                             <br>
-    ____        __  __                        __         ____<br>
-   / __ \__  __/ /_/ /_  ____  ____     _____/ /_  ___  / / /<br>
-  / /_/ / / / / __/ __ \/ __ \/ __ \   / ___/ __ \/ _ \/ / / <br>
- / ____/ /_/ / /_/ / / / /_/ / / / /  (__  ) / / /  __/ / /  <br>
-/_/    \__, /\__/_/ /_/\____/_/ /_/  /____/_/ /_/\___/_/_/   <br>
-      /____/                                                 <br>
-                                      __ <br>
-    ____  _________  ____ ___  ____  / /_<br>
-   / __ \/ ___/ __ \/ __ `__ \/ __ \/ __/<br>
-  / /_/ / /  / /_/ / / / / / / /_/ / /_  <br>
- / .___/_/   \____/_/ /_/ /_/ .___/\__/  <br>
-/_/                        /_/           <br></h5></p>
-
+<h2>Silver - A Python shell prompt</h2>
 
                                                                 
                    🏇 Hi-Yo, Silver! Away!                      
@@ -32,9 +13,9 @@ additional features/commands can be added by making pull requests to the master 
 
 Description
 -----------
-
-Release version<t><t><t>1.0<br>
-Author<t><t><t>Augustin Jose<br>
-Python version<t><t><t>3.6<br>
-Supported Platforms<t><t><t>Windows and UNIX<br>
-
+<p>
+Release version                                           1.0<br>
+Author                                                    Augustin Jose<br>
+Python version                                            3.6<br>
+Supported Platforms                                       Windows and UNIX<br>
+</p>
