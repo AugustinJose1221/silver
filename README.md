@@ -1,4 +1,4 @@
-<p>
+<p><h5>
    _____ _ __                            ___ <br>
   / ___/(_) /   _____  _____            /   |<br>
   \__ \/ / / | / / _ \/ ___/  ______   / /| |<br>
@@ -16,7 +16,7 @@
    / __ \/ ___/ __ \/ __ `__ \/ __ \/ __/<br>
   / /_/ / /  / /_/ / / / / / / /_/ / /_  <br>
  / .___/_/   \____/_/ /_/ /_/ .___/\__/  <br>
-/_/                        /_/           <br></p>
+/_/                        /_/           <br></h5></p>
 
 
                                                                 
@@ -33,8 +33,8 @@ additional features/commands can be added by making pull requests to the master 
 Description
 -----------
 
-Release version            1.0<br>
-Author                     Augustin Jose<br>
-Python version             3.6<br>
-Supported Platforms        Windows and UNIX<br>
+Release version<t><t><t>1.0<br>
+Author<t><t><t>Augustin Jose<br>
+Python version<t><t><t>3.6<br>
+Supported Platforms<t><t><t>Windows and UNIX<br>
 
