@@ -107,7 +107,12 @@ class silver(Cmd):
     
     
     
-    
+    def do_help(self, args):
+        print("You are screwed")    
+        return self.updatePrompt()
+    #Complete help
+    #Complete autocompletion
+
     def updatePrompt(self):
         """
         Updates the prompt with the path of the current directory when called.
