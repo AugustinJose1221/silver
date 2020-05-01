@@ -68,7 +68,7 @@ try:
 except ImportError:
     colored = None
 
-from Git import privateClone, clone, push, add, commit
+from src.Git import privateClone, clone, push, add, commit
 
 
 
