@@ -1,4 +1,4 @@
-<h5>Silver - A Python shell prompt</h5>
+<h1>Silver - A Python shell prompt</h1>
 
                                                                 
                    🏇 Hi-Yo, Silver! Away!                      
