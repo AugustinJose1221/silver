@@ -1,4 +1,4 @@
-<h2>Silver - A Python shell prompt</h2>
+<h1>Silver - A Python shell prompt</h1>
 
                                                                 
                    🏇 Hi-Yo, Silver! Away!                      
@@ -14,8 +14,8 @@ additional features/commands can be added by making pull requests to the master 
 Description
 -----------
 <p>
-Release version                                           1.0<br>
-Author                                                    Augustin Jose<br>
-Python version                                            3.6<br>
-Supported Platforms                                       Windows and UNIX<br>
+Release version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0<br>
+Author &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Augustin Jose<br>
+Python version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.6<br>
+Supported Platforms &nbsp;&nbsp;Windows and UNIX<br>
 </p>
