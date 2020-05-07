@@ -1,0 +1,14 @@
+README.md
+setup.py
+silver_AugustinJose1221.egg-info/PKG-INFO
+silver_AugustinJose1221.egg-info/SOURCES.txt
+silver_AugustinJose1221.egg-info/dependency_links.txt
+silver_AugustinJose1221.egg-info/top_level.txt
+src/Git.py
+src/__init__.py
+src/tests/__init__.py
+src/tests/test_add.py
+src/tests/test_clone.py
+src/tests/test_commit.py
+src/tests/test_privateClone.py
+src/tests/test_push.py
